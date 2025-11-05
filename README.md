@@ -1,253 +1,238 @@
 # Assistravel - Sistema de Gestión de Casos y Corresponsales
 
-Un sistema completo y moderno para la gestión de casos médicos y corresponsales internacionales, desarrollado con React, TypeScript, Supabase y TailwindCSS.
+## 📋 Descripción
 
-## Descripción
+Assistravel es una aplicación web completa para la gestión de casos de asistencia en viajes y corresponsales. La aplicación incluye un sistema de autenticación robusto con roles, gestión de casos, corresponsales, importación de datos desde Excel, y una interfaz moderna y profesional.
 
-Assistravel es una aplicación web full-stack diseñada para facilitar la gestión eficiente de casos médicos y corresponsales internacionales. Incluye un sistema robusto de autenticación multi-rol, gestión completa de datos, importación de archivos Excel y un diseño moderno y responsive.
+## ✨ Características Principales
 
-## Características Principales
+### 🔐 Sistema de Autenticación y Roles
+- **Autenticación completa** con Supabase Auth (email/contraseña)
+- **Sistema de roles de 3 niveles:**
+  - **Admin**: Acceso completo (gestión de usuarios, corresponsales, casos)
+  - **Editor**: Puede gestionar corresponsales y casos
+  - **Visualizador**: Solo puede ver la información
+- **Protección de rutas** basada en roles
+- **Gestión de usuarios** (solo para Admins)
 
-### Sistema de Autenticación Multi-Rol
-- **Admin**: Acceso completo a todos los módulos y gestión de usuarios
-- **Editor**: Gestión de casos y corresponsales (sin permisos de eliminación)
-- **Visualizador**: Acceso de solo lectura a todos los datos
+### 🏢 Gestión de Corresponsales
+- **Creación y edición** de corresponsales
+- **Información completa**: nombre, contacto, email, teléfono, dirección, país
+- **Vista detalle profesional** con estadísticas
+- **Casos relacionados** con cada corresponsal
+- **Búsqueda y filtrado** avanzado
 
-### Módulos Funcionales
-- **Gestión de Corresponsales**: CRUD completo con vista detallada profesional
-- **Gestión de Casos**: CRUD completo con cálculos automáticos
-- **Importación Excel**: Procesamiento automático de archivos .xlsx
-- **Gestión de Usuarios**: Administración completa de usuarios y roles (Solo Admin)
+### 📋 Gestión de Casos
+- **Casos completos** con información financiera
+- **Cálculo automático** de totales (Fee + Costo USD + Monto Agregado)
+- **Informe médico** (Sí/No)
+- **Dropdown moderno** para monedas (ARS, BRL, USD, EUR, etc.)
+- **Dropdown de países** con opción de agregar nuevos
+- **Estados de caso** personalizables
+- **Facturación** completa (fechas, números, etc.)
+- **Duplicación** de casos
 
-### Características Técnicas
-- **Frontend**: React 18 + TypeScript + Vite
-- **Backend**: Supabase (Base de datos PostgreSQL + Autenticación + Edge Functions)
-- **Styling**: TailwindCSS + Radix UI
-- **Routing**: React Router v6 con protección de rutas
-- **Seguridad**: Row Level Security (RLS) en base de datos
+### 📊 Funciones Avanzadas
+- **Importación desde Excel** con validación de datos
+- **Interfaz responsive** (móvil y desktop)
+- **Filtros y búsqueda** en tiempo real
+- **Paginación** inteligente
+- **Dashboard estadístico**
 
-## Demo en Vivo
+### 🎨 Diseño Moderno
+- **TailwindCSS** para estilos modernos
+- **Componentes reutilizables** con diseño consistente
+- **Iconos Lucide** integrados
+- **Animaciones sutiles** y transiciones
 
-**URL de Demostración**: [https://6b6lmu2di3z0.space.minimax.io](https://6b6lmu2di3z0.space.minimax.io)
+## 🚀 Tecnologías Utilizadas
 
-### Credenciales de Prueba
+- **Frontend:** React 18 + TypeScript + Vite
+- **Styling:** TailwindCSS + Radix UI
+- **Backend:** Supabase (Auth + Database + Storage + Edge Functions)
+- **Routing:** React Router v6
+- **Build Tool:** Vite
+- **Database:** PostgreSQL (vía Supabase)
+- **Deployment:** Vercel/Netlify compatible
 
-| Rol | Email | Contraseña | Permisos |
-|-----|-------|------------|----------|
-| **Admin** | admin@assistravel.com | Admin123456! | Acceso completo |
-| **Editor** | editor@assistravel.com | Admin123456! | Crear/Editar (sin eliminar) |
-| **Visualizador** | visualizador@assistravel.com | Admin123456! | Solo lectura |
-
-## Instalación y Configuración
-
-### Prerrequisitos
-
-- Node.js 18.0.0 o superior
-- npm 8.0.0 o superior
-- Cuenta en [Supabase](https://supabase.com)
-- (Opcional) Cuenta en [Vercel](https://vercel.com) para despliegue
-
-### Instalación Local
-
-1. **Clonar el repositorio**
-   ```bash
-   git clone https://github.com/orelvisrguez/assistravel.git
-   cd assistravel
-   ```
-
-2. **Instalar dependencias**
-   ```bash
-   npm install
-   ```
-
-3. **Configurar variables de entorno**
-   ```bash
-   cp .env.example .env.local
-   ```
-   
-   Edita `.env.local` con tus credenciales de Supabase:
-   ```env
-   VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
-   VITE_SUPABASE_ANON_KEY=tu_clave_publica_anonima
-   ```
-
-4. **Configurar Supabase**
-   - Sigue la guía en [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md)
-
-5. **Ejecutar en desarrollo**
-   ```bash
-   npm run dev
-   ```
-
-6. **Acceder a la aplicación**
-   ```
-   http://localhost:5173
-   ```
-
-## Despliegue en Vercel
-
-### Despliegue Automático (Recomendado)
-
-1. **Fork este repositorio**
-
-2. **Conectar con Vercel**
-   - Ve a [vercel.com](https://vercel.com) e importa tu fork
-   - Vercel detectará automáticamente la configuración
-
-3. **Configurar variables de entorno en Vercel**
-   ```
-   VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
-   VITE_SUPABASE_ANON_KEY=tu_clave_publica_anonima
-   ```
-
-4. **Desplegar**
-   - Vercel desplegará automáticamente en cada push a main
-
-### Despliegue Manual
-
-```bash
-# Construir para producción
-npm run build
-
-# Vista previa local del build
-npm run preview
-
-# Desplegar con Vercel CLI
-npx vercel --prod
-```
-
-Para más detalles, consulta [docs/DEPLOYMENT_GUIDE.md](docs/DEPLOYMENT_GUIDE.md)
-
-## Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```
 assistravel/
-├── docs/                          # Documentación
-│   ├── SUPABASE_SETUP.md         # Configuración de Supabase
-│   ├── DEPLOYMENT_GUIDE.md       # Guía de despliegue
-│   ├── DATABASE_SCHEMA.md        # Esquema de base de datos
-│   └── TROUBLESHOOTING.md        # Solución de problemas
 ├── src/
-│   ├── components/               # Componentes React
-│   │   ├── AuthPage.tsx          # Página de autenticación
-│   │   ├── Layout.tsx            # Layout principal
-│   │   ├── CorresponsalesDashboard.tsx # Dashboard de corresponsales
-│   │   ├── CorresponsalDetail.tsx # Vista detallada de corresponsal
-│   │   ├── CasosDashboard.tsx    # Dashboard de casos
-│   │   ├── CasoDetail.tsx        # Vista detallada de caso
-│   │   ├── ImportPage.tsx        # Módulo de importación Excel
-│   │   ├── UserManagement.tsx    # Gestión de usuarios
-│   │   └── ProtectedRoute.tsx    # Protección de rutas
+│   ├── components/           # Componentes React
+│   │   ├── AuthPage.tsx      # Página de login/registro
+│   │   ├── CasosDashboard.tsx # Dashboard principal de casos
+│   │   ├── CorresponsalDetail.tsx # Vista detalle corresponsal
+│   │   ├── CorresponsalesDashboard.tsx # Dashboard corresponsales
+│   │   ├── UserManagement.tsx # Gestión de usuarios (Admin)
+│   │   ├── ProtectedRoute.tsx # Componente de protección
+│   │   └── ModernDropdown.tsx # Dropdown moderno reutilizable
 │   ├── contexts/
-│   │   └── AuthContext.tsx       # Contexto de autenticación
+│   │   └── AuthContext.tsx    # Contexto de autenticación
 │   ├── hooks/
-│   │   └── use-mobile.tsx        # Hook para detección móvil
-│   └── lib/
-│       ├── supabase.ts           # Cliente Supabase
-│       └── utils.ts              # Utilidades
-├── supabase/
-│   ├── functions/                # Edge Functions
-│   └── migrations/               # Migraciones de base de datos
-├── package.json
-├── vercel.json                   # Configuración Vercel
-├── .env.example                  # Variables de entorno ejemplo
-└── README.md
+│   │   └── use-mobile.tsx     # Hook para detectar móvil
+│   ├── lib/
+│   │   ├── supabase.ts        # Cliente de Supabase
+│   │   └── utils.ts           # Utilidades
+│   ├── App.tsx                # Componente principal
+│   └── main.tsx               # Punto de entrada
+├── public/                    # Archivos públicos
+├── dist/                      # Archivos compilados
+├── supabase/                  # Configuración de base de datos
+│   ├── migrations/            # Migraciones de BD
+│   └── functions/             # Edge functions
+├── docs/                      # Documentación completa
+├── package.json               # Dependencias y scripts
+├── tailwind.config.js         # Configuración de Tailwind
+├── vite.config.ts             # Configuración de Vite
+└── vercel.json                # Configuración de deploy
 ```
 
-## Tecnologías Utilizadas
+## 🏗️ Instalación y Configuración
 
-### Frontend
-- **React 18** - Framework de UI
-- **TypeScript** - Tipado estático
-- **Vite** - Herramienta de build rápida
-- **TailwindCSS** - Framework CSS utility-first
-- **Radix UI** - Componentes accesibles
-- **React Router v6** - Routing del lado cliente
-- **React Hook Form** - Gestión de formularios
-- **Lucide React** - Iconografía
+### Prerrequisitos
+- Node.js 18+ y npm
+- Cuenta de Supabase
+- Git
 
-### Backend
-- **Supabase** - Backend as a Service
-- **PostgreSQL** - Base de datos relacional
-- **Row Level Security** - Seguridad a nivel de fila
-- **Edge Functions** - Funciones serverless
-- **Realtime** - Actualizaciones en tiempo real
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/orelvisrguez/assistravel.git
+cd assistravel
+```
 
-### Herramientas de Desarrollo
-- **ESLint** - Linting de código
-- **TypeScript** - Verificación de tipos
-- **PostCSS** - Procesamiento CSS
-- **Autoprefixer** - Prefijos CSS automáticos
+### 2. Instalar dependencias
+```bash
+npm install
+```
 
-## Funcionalidades Detalladas
+### 3. Configurar variables de entorno
+Crear archivo `.env.local`:
+```env
+VITE_SUPABASE_URL=tu_supabase_url
+VITE_SUPABASE_ANON_KEY=tu_supabase_anon_key
+```
 
-### Módulo de Corresponsales
-- Vista de listado con búsqueda y paginación
-- Vista detallada profesional con información completa
-- Resumen estadístico (total de casos, montos, distribución por estado)
-- Sección de casos relacionados con filtros y búsqueda
-- CRUD completo con validaciones
+### 4. Configurar Supabase
+Sigue las instrucciones en [`docs/SUPABASE_SETUP.md`](docs/SUPABASE_SETUP.md) para:
+- Crear las tablas necesarias
+- Configurar RLS (Row Level Security)
+- Crear usuarios de prueba
+- Configurar edge functions
 
-### Módulo de Casos
-- Gestión completa de casos médicos
-- Cálculo automático de totales (Fee + Costo USD + Monto Agregado)
-- Estados de caso con códigos de color consistentes
-- Formularios modernos con validaciones robustas
+### 5. Construir y ejecutar
+```bash
+# Desarrollo
+npm run dev
+
+# Producción
+npm run build
+npm run preview
+```
+
+## 📚 Documentación Completa
+
+- **[Configuración de Supabase](docs/SUPABASE_SETUP.md)** - Guía completa de configuración
+- **[Guía de Deploy](docs/DEPLOYMENT_GUIDE.md)** - Cómo desplegar en Vercel
+- **[Esquema de Base de Datos](docs/DATABASE_SCHEMA.md)** - Estructura completa de BD
+- **[Solución de Problemas](docs/TROUBLESHOOTING.md)** - Problemas comunes y soluciones
+
+## 🧪 Usuarios de Prueba
+
+La aplicación incluye usuarios de prueba preconfigurados:
+
+| Email | Contraseña | Rol | Permisos |
+|-------|------------|-----|----------|
+| `admin@assistravel.com` | `Admin123456!` | Admin | Acceso completo |
+| `editor@assistravel.com` | `Admin123456!` | Editor | Gestión de casos/corresponsales |
+| `visualizador@assistravel.com` | `Admin123456!` | Visualizador | Solo visualización |
+
+## 🎯 Funcionalidades por Rol
+
+### Admin
+- ✅ Gestión completa de usuarios
+- ✅ Gestión completa de corresponsales
+- ✅ Gestión completa de casos
+- ✅ Importación de datos desde Excel
+- ✅ Acceso a todas las secciones
+
+### Editor
+- ✅ Gestión de corresponsales
+- ✅ Gestión de casos
+- ✅ Importación de datos desde Excel
+- ✅ Acceso a dashboard y reportes
+
+### Visualizador
+- ✅ Solo visualización de corresponsales
+- ✅ Solo visualización de casos
+- ✅ No puede crear, editar o eliminar
+- ✅ No tiene acceso a importación
+
+## 🌍 Deploy en Vercel
+
+1. **Conectar repositorio:**
+   - Ve a [vercel.com](https://vercel.com)
+   - Conecta tu repositorio de GitHub
+   - Configura las variables de entorno:
+     - `VITE_SUPABASE_URL`
+     - `VITE_SUPABASE_ANON_KEY`
+
+2. **Deploy automático:**
+   - Vercel detectará automáticamente que es un proyecto Vite
+   - Build command: `npm run build`
+   - Output directory: `dist`
+
+3. **URL de producción:**
+   - Después del deploy, tendrás una URL como: `https://tu-app.vercel.app`
+
+## 📊 Base de Datos
+
+### Tablas Principales
+
+#### `user_profiles`
+- Gestión de usuarios y roles
+- RLS configurado para seguridad por usuario
+
+#### `corresponsales`
+- Información completa de corresponsales
+- Cada usuario ve solo sus corresponsales
+
+#### `casos`
+- Casos completos con información financiera
+- Trigger automático para calcular totales
 - Relación con corresponsales
 
-### Sistema de Importación Excel
-- Drag & drop de archivos .xlsx
-- Procesamiento automático en dos fases
-- Validaciones y conversión de datos
-- Estadísticas y reporte de errores
-- Barra de progreso visual
+### Migraciones
+Todas las migraciones están en `supabase/migrations/` y se aplican automáticamente.
 
-### Sistema de Usuarios (Solo Admin)
-- Creación y gestión de usuarios
-- Asignación de roles
-- Invitaciones por email
-- Cambio de contraseñas
-- Eliminación de usuarios
+## 🔧 Scripts Disponibles
 
-## Seguridad
+- `npm run dev` - Servidor de desarrollo
+- `npm run build` - Construir para producción
+- `npm run preview` - Previsualizar build local
+- `npm run lint` - Verificar código con ESLint
 
-- **Autenticación**: Supabase Auth con email/contraseña
-- **Autorización**: Sistema de roles con permisos granulares
-- **Base de Datos**: Row Level Security (RLS) en todas las tablas
-- **Frontend**: Protección de rutas basada en roles
-- **HTTPS**: Comunicación segura en producción
+## 🤝 Contribución
 
-## Contribuir
+1. Fork del repositorio
+2. Crear branch para feature: `git checkout -b feature/nueva-funcionalidad`
+3. Commit de cambios: `git commit -m 'Agregar nueva funcionalidad'`
+4. Push al branch: `git push origin feature/nueva-funcionalidad`
+5. Crear Pull Request
 
-1. Fork el proyecto
-2. Crea tu rama de feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+## 📄 Licencia
 
-## Licencia
+Este proyecto está bajo la Licencia MIT. Ver archivo `LICENSE` para más detalles.
 
-Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
+## 🆘 Soporte
 
-## Soporte
-
-Si encuentras algún problema o tienes preguntas:
-
-1. Revisa la documentación en [docs/](docs/)
-2. Consulta la guía de solución de problemas: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
-3. Abre un issue en GitHub
-
-## Roadmap
-
-- [ ] Módulo de reportes avanzados
-- [ ] Integración con APIs de terceros
-- [ ] Notificaciones en tiempo real
-- [ ] Módulo de facturación
-- [ ] API REST pública
-- [ ] Aplicación móvil
+Para soporte técnico, problemas o sugerencias:
+- Revisar [documentación](docs/)
+- Crear un issue en GitHub
+- Contactar al equipo de desarrollo
 
 ---
 
-**Desarrollado con ❤️ por MiniMax Agent**
-
-**Demo**: [https://6b6lmu2di3z0.space.minimax.io](https://6b6lmu2di3z0.space.minimax.io)
+**Assistravel** - Sistema profesional de gestión de casos y corresponsales  
+Desarrollado con ❤️ usando React + Supabase
