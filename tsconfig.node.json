@@ -1,1 +1,17 @@
-{"compilerOptions": {"target": "ES2022", "lib": ["ES2023"], "module": "ESNext", "skipLibCheck": true, "moduleResolution": "bundler", "allowSyntheticDefaultImports": true, "strict": true, "noEmit": true, "types": ["node"]}, "include": ["vite.config.ts", "build-and-deploy.sh"]}
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "composite": true,
+    "allowJs": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "types": ["node"]
+  },
+  "include": ["vite.config.ts", "build-and-deploy.sh"]
+}
